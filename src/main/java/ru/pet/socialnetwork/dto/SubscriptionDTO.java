@@ -1,0 +1,22 @@
+package ru.pet.socialnetwork.dto;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Schema(description = "DTO подписки")
+public class SubscriptionDTO extends GenericDTO {
+
+    @Schema(description = "id пользователя - инициатора заявки",
+            accessMode = Schema.AccessMode.READ_ONLY)
+    private Long userId;
+
+    @Schema(description = "id пользователя - объекта подписки")
+    private Long targetUserId;
+
+    @Schema(description = "Флаг наличия/принятия/отклонения заявки в друзья",
+            accessMode = Schema.AccessMode.READ_ONLY)
+    private Boolean friendly;
+}
