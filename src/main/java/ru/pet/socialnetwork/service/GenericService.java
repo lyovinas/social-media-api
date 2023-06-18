@@ -24,8 +24,11 @@ public abstract class GenericService<E extends GenericModel, D extends GenericDT
             return null;
         }
         E newEntity = mapper.toEntity(newDTO);
-        newEntity.setCreatedWhen(LocalDateTime.now());
-        return mapper.toDTO(repository.save(newEntity));
+        if (newEntity != null) {
+            newEntity.setCreatedWhen(LocalDateTime.now());
+            return mapper.toDTO(repository.save(newEntity));
+        }
+        return null;
     }
 
     public D update(Long id, D dto) {

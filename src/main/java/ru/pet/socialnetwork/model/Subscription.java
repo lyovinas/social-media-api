@@ -1,13 +1,17 @@
 package ru.pet.socialnetwork.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "subscriptions")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @SequenceGenerator(name = "default_gen", sequenceName = "subscriptions_seq", allocationSize = 1)
 public class Subscription extends GenericModel {
 

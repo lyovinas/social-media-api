@@ -61,9 +61,9 @@ public class JWTSecurityConfig {
 //                        .requestMatchers(MESSAGES_PERMISSION_LIST.toArray(String[]::new)).hasRole(ADMIN)
                 )
                 .exceptionHandling()
-                .authenticationEntryPoint((request, response, authException) -> {
-                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
-                })
+                .authenticationEntryPoint(
+                        (request, response, authException) ->
+                                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage()))
                 .and()
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
